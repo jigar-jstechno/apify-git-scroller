@@ -1,0 +1,19 @@
+# Add your dependencies here.
+# See https://pip.pypa.io/en/latest/cli/pip_install/#requirements-file-format
+# for how to format them
+webdriver-manager==3.5.2
+selenium==3.141.0
+asyncio==3.4.3
+webcolors==1.11.1
+webdriver-manager==3.5.2
+webencodings==0.5.1
+WebOb==1.8.7
+webrtcvad==2.0.10
+websocket-client==0.53.0
+websockets==8.0.2
+WebTest==2.0.35
+webvtt-py==0.4.6
+Pillow==7.1.0
+pandas==1.4.1
+pybase64==1.2.1
+requests==2.27.1
