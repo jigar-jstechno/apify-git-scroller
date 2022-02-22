@@ -61,7 +61,7 @@ cook=""
 if "cookieWindowSelector" in actor_input:
     cook=actor_input["cookieWindowSelector"]
 _DRIVER = test.d
-lossy=actor_input["loslessCompression"]
+lossy=actor_input["lossyCompression"]
 losless=actor_input["loslessCompression"]
 if lossy==False and losless==False:
     losless=True
@@ -200,12 +200,12 @@ if losless==True and lossy==True:
     ]
    
 
-elif losless==True:
+elif lossy==True:
     objc=[
         {'losy': 'https://api.apify.com/v2/key-value-stores/'+os.environ['APIFY_DEFAULT_KEY_VALUE_STORE_ID']+'/records/'+lossy_out}
     ]
       
-elif lossy==True:
+elif losless==True:
     objc=[
         {'losless': 'https://api.apify.com/v2/key-value-stores/'+os.environ['APIFY_DEFAULT_KEY_VALUE_STORE_ID']+'/records/'+losless_out}
     ]
