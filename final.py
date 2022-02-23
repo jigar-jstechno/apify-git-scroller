@@ -182,7 +182,7 @@ if lossy==True:
         im_bytes = f.read()        
     im_b64 = base64.b64encode(im_bytes).decode("utf8")
 
-    default_kv_store_client.set_record(lossy_out,im_bytes)#file1.read()
+    default_kv_store_client.set_record(lossy_out,im_bytes,content_type='image/gif')#file1.read()
 
 
 if losless==True:
@@ -190,7 +190,7 @@ if losless==True:
         im_bytes1 = f.read()        
     im_b641 = base64.b64encode(im_bytes1).decode("utf8")
     # default_kv_store_client.set_record('gif',"data:image/gif;base64,"+ im_b64)#file1.read()
-    default_kv_store_client.set_record(losless_out,im_bytes1)#file1.read()
+    default_kv_store_client.set_record(losless_out,im_bytes1,content_type='image/gif')#file1.read()
 
 onjc=[]
 
