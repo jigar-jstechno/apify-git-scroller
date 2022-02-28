@@ -46,6 +46,60 @@
             "default": 0,
             "example": 5
         },
+        "scrollPercentage2": {
+            "title": "Scroll percentage 2",
+            "type": "integer",
+            "description": "Amount to scroll down determined as a percentage of the vierport height.\n\nFor example, if viewport height is 1000 pixels and scroll percentage is set to 10%.\nThen scroll down by 10% of viewport height: 1000 px = 100 px",
+            "editor": "number",
+            "unit": "%",
+            "default": 10,
+            "example": 10
+        },
+        "waitToLoadPage2": {
+            "title": "Wait to load 2",
+            "type": "integer",
+            "description": "Set time to wait in the beginning so that page is fully loaded.\nFor example when there is loading bar in the beginning that you don't want in the recording.",
+            "editor": "number",
+            "unit": "ms",
+            "default": 0,
+            "example": 5
+        },
+        "scrollPercentage3": {
+            "title": "Scroll percentage 3",
+            "type": "integer",
+            "description": "Amount to scroll down determined as a percentage of the vierport height.\n\nFor example, if viewport height is 1000 pixels and scroll percentage is set to 10%.\nThen scroll down by 10% of viewport height: 1000 px = 100 px",
+            "editor": "number",
+            "unit": "%",
+            "default": 10,
+            "example": 10
+        },
+        "waitToLoadPage3": {
+            "title": "Wait to load 3",
+            "type": "integer",
+            "description": "Set time to wait in the beginning so that page is fully loaded.\nFor example when there is loading bar in the beginning that you don't want in the recording.",
+            "editor": "number",
+            "unit": "ms",
+            "default": 0,
+            "example": 5
+        },
+        "scrollPercentage4": {
+            "title": "Scroll percentage 4",
+            "type": "integer",
+            "description": "Amount to scroll down determined as a percentage of the vierport height.\n\nFor example, if viewport height is 1000 pixels and scroll percentage is set to 10%.\nThen scroll down by 10% of viewport height: 1000 px = 100 px",
+            "editor": "number",
+            "unit": "%",
+            "default": 10,
+            "example": 10
+        },
+        "waitToLoadPage4": {
+            "title": "Wait to load 4",
+            "type": "integer",
+            "description": "Set time to wait in the beginning so that page is fully loaded.\nFor example when there is loading bar in the beginning that you don't want in the recording.",
+            "editor": "number",
+            "unit": "ms",
+            "default": 0,
+            "example": 5
+        },
         "cookieWindowSelector": {
             "title": "Cookie window selector",
             "type": "string",

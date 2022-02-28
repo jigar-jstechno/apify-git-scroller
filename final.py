@@ -55,8 +55,14 @@ _FINAL_W = "640"
 _FINAL_H = "360"
 
 _SCROLL_STEP = actor_input["scrollPercentage"]
+_SCROLL_STEP2 = actor_input["scrollPercentage2"]
+_SCROLL_STEP3 = actor_input["scrollPercentage3"]
+_SCROLL_STEP4 = actor_input["scrollPercentage4"]
 _TIME_PER_FRAME = actor_input["frameRate"]
 waitToLoad=actor_input["waitToLoadPage"]
+waitToLoad2=actor_input["waitToLoadPage2"]
+waitToLoad3=actor_input["waitToLoadPage3"]
+waitToLoad4=actor_input["waitToLoadPage4"]
 cook=""
 if "cookieWindowSelector" in actor_input:
     cook=actor_input["cookieWindowSelector"]
@@ -117,6 +123,10 @@ def scroll_page():
         screenshot = take_screenshot(num=len(screenshot_list))
         screenshot_list.append(screenshot)
     print(f" - {str(len(screenshot_list))} screenshots taken")
+
+    validate_stop_y()
+
+
     return screenshot_list
 
 
