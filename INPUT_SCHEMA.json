@@ -28,6 +28,16 @@
             "default": true,
             "example": true
         },
+        "scrollSteps": {
+            "title": "Scroll Steps",
+            "type": "integer",
+            "description": "Scroll Steps",
+            "editor": "number",
+            "unit": "px",
+            "prefill": 5,
+            "default": 5,
+            "example": 5
+        },
         "scrollPercentage": {
             "title": "Scroll percentage",
             "type": "integer",
