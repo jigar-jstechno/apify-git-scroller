@@ -21,7 +21,6 @@ COPY requirements.txt ./
 #RUN wget -N https://chromedriver.storage.googleapis.com/98.0.4758.102/chromedriver_linux64.zip
 #RUN unzip chromedriver_linux64.zip
 #RUN chmod +x chromedriver
-RUN apt-get update
 #RUN apt-get install -y libgbm1 gconf-service libasound2 libatk1.0-0 libcairo2 libcups2 libfontconfig1 libgdk-pixbuf2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libxss1 fonts-liberation  libnss3 lsb-release xdg-utils apt-utils
 #RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 #RUN dpkg -i google-chrome-stable_current_amd64.deb; apt-get -fy install
@@ -51,19 +50,16 @@ RUN apt-get update
 #RUN snap install chromium-browser
 #RUN snap isntall chromium-chromedriver
 #RUN deb http://deb.debian.org/debian experimental main
-RUN apt-get install python3 -yf
-RUN apt-get install python3-pip -yf
-RUN apt install python3-venv -yf
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Asia/Kolkata
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+RUN apt-get update
+RUN apt-get install build-essential aptitude python3 apt-utils python3-pip python3-venv -yf
 RUN python3 -m venv env
 RUN . env/bin/activate
 #RUN source env\Scripts\activate
 
-
-ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=Asia/Kolkata
-RUN apt-get install apt-utils -yf
-RUN apt-get install aptitude -yf
-RUN apt-get install -yf git python3 python3-pip curl build-essential wget unzip xvfb
+RUN apt-get install -yf git curl build-essential wget unzip xvfb
 RUN apt-get install -yf fonts-liberation libasound2 libatk-bridge2.0-0 libatk1.0-0 libatspi2.0-0 libcups2 libdbus-1-3 libdrm2 libgbm1 libgtk-3-0 libnspr4 libnss3 libxcomposite1 libxdamage1 libxfixes3 libxkbcommon0 libxrandr2 xdg-utils
 RUN curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o /chrome.deb
 RUN dpkg -i /chrome.deb || apt-get install -yf
