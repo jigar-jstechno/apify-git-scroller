@@ -144,7 +144,7 @@ def scroll_page():
         screenshot = take_screenshot(num=len(screenshot_list))
         screenshot_list.append(screenshot)
         current_wtl+=150
-    
+    _START_Y=_STOP_Y
     print(f" - {str(len(screenshot_list))} screenshots taken")
 
     validate_stop_y()
