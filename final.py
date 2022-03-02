@@ -138,6 +138,7 @@ def scroll_page():
             screenshot_list.append(screenshot)
     current_wtl=0
     while current_wtl < wtl*1000:
+        print("Taking Screenshot wtl"+wtl)
         screenshot = take_screenshot(num=len(screenshot_list))
         screenshot_list.append(screenshot)
         current_wtl+=150
