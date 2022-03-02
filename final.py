@@ -123,7 +123,9 @@ def scroll_page():
     current_y = int(_START_Y)
     _START_Y = int(_START_Y)
     _STOP_Y = int(_STOP_Y)
-
+    print(str(_START_Y)+'_START_Y')
+    print(str(current_y)+'current_y')
+    print(str(_STOP_Y)+'_STOP_Y')
     if(_STOP_Y>_START_Y):
         while current_y < _STOP_Y:
             current_y += int(_SCROLL_STEP)
@@ -138,7 +140,7 @@ def scroll_page():
             screenshot_list.append(screenshot)
     current_wtl=0
     while current_wtl < wtl*1000:
-        print("Taking Screenshot wtl"+str(wtl))
+        print("wtl"+str(wtl))
         screenshot = take_screenshot(num=len(screenshot_list))
         screenshot_list.append(screenshot)
         current_wtl+=150
@@ -164,6 +166,7 @@ def create_gif(screenshots: list):
     lossy_out = "final_image_lossy.gif"
     losless_out = "final_image_losless.gif"
     img, *imgs = map(process_frame, screenshots)
+    print(str(_TIME_PER_FRAME)+"_TIME_PER_FRAME")
     img.save(
         fp=losless_out,
         format="GIF",
