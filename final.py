@@ -54,16 +54,16 @@ if actor_input["scrollDown"]==False:
 _FINAL_W = "640"
 _FINAL_H = "360"
 
-_SCROLL_STEP = actor_input["scrollPercentage"]
-_SCROLL_PER = actor_input["scrollPercentage"]
-_SCROLL_PER2 = actor_input["scrollPercentage2"]
-_SCROLL_PER3 = actor_input["scrollPercentage3"]
-_SCROLL_PER4 = actor_input["scrollPercentage4"]
+_SCROLL_STEP = int(actor_input["scrollPercentage"])
+_SCROLL_PER = int(actor_input["scrollPercentage"])
+_SCROLL_PER2 = int(actor_input["scrollPercentage2"])
+_SCROLL_PER3 = int(actor_input["scrollPercentage3"])
+_SCROLL_PER4 = int(actor_input["scrollPercentage4"])
 _TIME_PER_FRAME = actor_input["frameRate"]
-waitToLoad=actor_input["waitToLoadPage"]
-waitToLoad2=actor_input["waitToLoadPage2"]
-waitToLoad3=actor_input["waitToLoadPage3"]
-waitToLoad4=actor_input["waitToLoadPage4"]
+waitToLoad=int(actor_input["waitToLoadPage"])
+waitToLoad2=int(actor_input["waitToLoadPage2"])
+waitToLoad3=int(actor_input["waitToLoadPage3"])
+waitToLoad4=int(actor_input["waitToLoadPage4"])
 cook=""
 if "cookieWindowSelector" in actor_input:
     cook=actor_input["cookieWindowSelector"]
@@ -178,25 +178,36 @@ def create_gif(screenshots: list):
     
 
 start_driver()
+page_height = _DRIVER.execute_script("return document.body.parentNode.scrollHeight")
+
+
 if(_SCROLL_PER):
-    _STOP_Y=_SCROLL_PER
+    _STOP_Y=_SCROLL_PER*page_height/100
     screenshots = scroll_page()
+    print("Sleep 1 Start")
     sleep(waitToLoad)
+    print("Sleep 1 Stop")
 
 if(_SCROLL_PER2):
-    _STOP_Y=_SCROLL_PER2
+    _STOP_Y=_SCROLL_PER2*page_height/100
     screenshots = scroll_page()
+    print("Sleep 2 Start")
     sleep(waitToLoad2)
+    print("Sleep 2 Stop")
 
 if(_SCROLL_PER3):
-    _STOP_Y=_SCROLL_PER3
+    _STOP_Y=_SCROLL_PER3*page_height/100
     screenshots = scroll_page()
+    print("Sleep 3 Start")
     sleep(waitToLoad3)
+    print("Sleep 3 Stop")
 
 if(_SCROLL_PER4):
-    _STOP_Y=_SCROLL_PER4
+    _STOP_Y=_SCROLL_PER4*page_height/100
     screenshots = scroll_page()
+    print("Sleep 4 Start")
     sleep(waitToLoad4)
+    print("Sleep 4 Stop")
 
 _STOP_Y=0
 screenshots = scroll_page()
