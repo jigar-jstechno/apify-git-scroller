@@ -117,6 +117,8 @@ def scroll_page():
     _DRIVER.implicitly_wait(2)
     screenshot_list = [take_screenshot(num=0)]
     current_y = int(_START_Y)
+    _START_Y = int(_START_Y)
+    _STOP_y = int(_STOP_y)
 
     if(_STOP_Y>_START_Y):
         while current_y < _STOP_Y:
