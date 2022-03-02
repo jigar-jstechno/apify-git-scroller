@@ -199,7 +199,7 @@ screenshots=[]
 if(_SCROLL_PER):
     _STOP_Y=_SCROLL_PER*page_height/100
     wtl=waitToLoad
-    screenshots.append(scroll_page())
+    screenshots=screenshots+scroll_page()
     print("Sleep 1 Start")
     sleep(waitToLoad)
     print("Sleep 1 Stop")
@@ -207,7 +207,7 @@ if(_SCROLL_PER):
 if(_SCROLL_PER2):
     _STOP_Y=_SCROLL_PER2*page_height/100
     wtl=waitToLoad2
-    screenshots.append(scroll_page())
+    screenshots=screenshots+scroll_page()
     print("Sleep 2 Start")
     sleep(waitToLoad2)
     print("Sleep 2 Stop")
@@ -215,7 +215,7 @@ if(_SCROLL_PER2):
 if(_SCROLL_PER3):
     _STOP_Y=_SCROLL_PER3*page_height/100
     wtl=waitToLoad3
-    screenshots.append(scroll_page())
+    screenshots=screenshots+scroll_page()
     print("Sleep 3 Start")
     sleep(waitToLoad3)
     print("Sleep 3 Stop")
@@ -223,13 +223,13 @@ if(_SCROLL_PER3):
 if(_SCROLL_PER4):
     _STOP_Y=_SCROLL_PER4*page_height/100
     wtl=waitToLoad4
-    screenshots.append(scroll_page())
+    screenshots=screenshots+scroll_page()
     print("Sleep 4 Start")
     sleep(waitToLoad4)
     print("Sleep 4 Stop")
 
 _STOP_Y=0
-screenshots.append(scroll_page())
+screenshots=screenshots+scroll_page()
 print(str(screenshots))
 # l = len(screenshots)
 # l = l/2
