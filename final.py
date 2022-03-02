@@ -118,7 +118,7 @@ def scroll_page():
     screenshot_list = [take_screenshot(num=0)]
     current_y = int(_START_Y)
     _START_Y = int(_START_Y)
-    _STOP_y = int(_STOP_y)
+    _STOP_Y = int(_STOP_Y)
 
     if(_STOP_Y>_START_Y):
         while current_y < _STOP_Y:
