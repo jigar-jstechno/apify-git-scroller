@@ -55,9 +55,9 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Kolkata
 RUN apt-get install build-essential aptitude apt-utils -yf
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
-RUN apt-get install python3 python3-pip python3-venv -yf
-RUN python3 -m venv env
-RUN . env/bin/activate
+RUN apt-get install python3 python3-pip libjpeg-dev zlib1g-dev -yf   
+# RUN python3 -m venv env
+# RUN . env/bin/activate
 #RUN source env\Scripts\activate
 
 RUN apt-get install -yf git curl build-essential wget unzip xvfb
