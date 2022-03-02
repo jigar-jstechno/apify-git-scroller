@@ -53,6 +53,7 @@ if actor_input["scrollDown"]==False:
 
 _FINAL_W = "640"
 _FINAL_H = "360"
+wtl=0
 
 _SCROLL_STEP = int(actor_input["scrollPercentage"])
 _SCROLL_PER = int(actor_input["scrollPercentage"])
@@ -113,6 +114,8 @@ def validate_stop_y():
 def scroll_page():
     global _START_Y
     global _STOP_Y
+    global wtl
+    
     validate_stop_y()
     _DRIVER.execute_script(f"window.scrollTo(0, {_START_Y})")
     _DRIVER.implicitly_wait(2)
@@ -133,11 +136,16 @@ def scroll_page():
             _DRIVER.execute_script(f"window.scrollTo(0, {str(current_y)})")
             screenshot = take_screenshot(num=len(screenshot_list))
             screenshot_list.append(screenshot)
+    current_wtl=0
+    while current_wtl < wtl*1000:
+        screenshot = take_screenshot(num=len(screenshot_list))
+        screenshot_list.append(screenshot)
+        current_wtl+=150
+    
     print(f" - {str(len(screenshot_list))} screenshots taken")
 
     validate_stop_y()
-
-
+    
     return screenshot_list
 
 
@@ -183,6 +191,7 @@ page_height = _DRIVER.execute_script("return document.body.parentNode.scrollHeig
 
 if(_SCROLL_PER):
     _STOP_Y=_SCROLL_PER*page_height/100
+    wtl=waitToLoad
     screenshots = scroll_page()
     print("Sleep 1 Start")
     sleep(waitToLoad)
@@ -190,6 +199,7 @@ if(_SCROLL_PER):
 
 if(_SCROLL_PER2):
     _STOP_Y=_SCROLL_PER2*page_height/100
+    wtl=waitToLoad2
     screenshots = scroll_page()
     print("Sleep 2 Start")
     sleep(waitToLoad2)
@@ -197,6 +207,7 @@ if(_SCROLL_PER2):
 
 if(_SCROLL_PER3):
     _STOP_Y=_SCROLL_PER3*page_height/100
+    wtl=waitToLoad3
     screenshots = scroll_page()
     print("Sleep 3 Start")
     sleep(waitToLoad3)
@@ -204,6 +215,7 @@ if(_SCROLL_PER3):
 
 if(_SCROLL_PER4):
     _STOP_Y=_SCROLL_PER4*page_height/100
+    wtl=waitToLoad4
     screenshots = scroll_page()
     print("Sleep 4 Start")
     sleep(waitToLoad4)
