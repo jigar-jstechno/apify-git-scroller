@@ -167,6 +167,8 @@ def create_gif(screenshots: list):
     losless_out = "final_image_losless.gif"
     img, *imgs = map(process_frame, screenshots)
     print(str(_TIME_PER_FRAME)+"_TIME_PER_FRAME")
+    print(str(len(screenshots))+"len screenshots")
+    
     img.save(
         fp=losless_out,
         format="GIF",
@@ -192,11 +194,12 @@ def create_gif(screenshots: list):
 start_driver()
 page_height = _DRIVER.execute_script("return document.body.parentNode.scrollHeight")
 
+screenshots=[]
 
 if(_SCROLL_PER):
     _STOP_Y=_SCROLL_PER*page_height/100
     wtl=waitToLoad
-    screenshots = scroll_page()
+    screenshots.append(scroll_page())
     print("Sleep 1 Start")
     sleep(waitToLoad)
     print("Sleep 1 Stop")
@@ -204,7 +207,7 @@ if(_SCROLL_PER):
 if(_SCROLL_PER2):
     _STOP_Y=_SCROLL_PER2*page_height/100
     wtl=waitToLoad2
-    screenshots = scroll_page()
+    screenshots.append(scroll_page())
     print("Sleep 2 Start")
     sleep(waitToLoad2)
     print("Sleep 2 Stop")
@@ -212,7 +215,7 @@ if(_SCROLL_PER2):
 if(_SCROLL_PER3):
     _STOP_Y=_SCROLL_PER3*page_height/100
     wtl=waitToLoad3
-    screenshots = scroll_page()
+    screenshots.append(scroll_page())
     print("Sleep 3 Start")
     sleep(waitToLoad3)
     print("Sleep 3 Stop")
@@ -220,24 +223,24 @@ if(_SCROLL_PER3):
 if(_SCROLL_PER4):
     _STOP_Y=_SCROLL_PER4*page_height/100
     wtl=waitToLoad4
-    screenshots = scroll_page()
+    screenshots.append(scroll_page())
     print("Sleep 4 Start")
     sleep(waitToLoad4)
     print("Sleep 4 Stop")
 
 _STOP_Y=0
-screenshots = scroll_page()
+screenshots.append(scroll_page())
 
-l = len(screenshots)
-l = l/2
-sc= int(l/10)
-l = int(l)
-s = screenshots[1]
-k = screenshots[l]
-for i in range(sc):
-    screenshots.insert(l, k)
-for i in range(sc):
-    screenshots.insert(2, s)
+# l = len(screenshots)
+# l = l/2
+# sc= int(l/10)
+# l = int(l)
+# s = screenshots[1]
+# k = screenshots[l]
+# for i in range(sc):
+#     screenshots.insert(l, k)
+# for i in range(sc):
+#     screenshots.insert(2, s)
 close_driver()
 create_gif(screenshots=screenshots)
 
