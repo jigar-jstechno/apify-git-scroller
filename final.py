@@ -230,7 +230,7 @@ if(_SCROLL_PER4):
 
 _STOP_Y=0
 screenshots.append(scroll_page())
-
+print(str(screenshots))
 # l = len(screenshots)
 # l = l/2
 # sc= int(l/10)
