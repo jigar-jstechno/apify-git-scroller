@@ -2,7 +2,7 @@
 # You can see the Docker images from Apify at https://hub.docker.com/r/apify/.
 # You can also use any other image from Docker Hub.
 #FROM apify/actor-python:3.9
-FROM ubuntu:20.04
+FROM ubuntu:20.10
 # Second, copy just requirements.txt into the actor image,
 # since it should be the only file that affects "pip install" in the next step,
 # in order to speed up the build
@@ -50,11 +50,12 @@ COPY requirements.txt ./
 #RUN snap install chromium-browser
 #RUN snap isntall chromium-chromedriver
 #RUN deb http://deb.debian.org/debian experimental main
+RUN apt-get update
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Kolkata
+RUN apt-get install build-essential aptitude apt-utils -yf
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
-RUN apt-get update
-RUN apt-get install build-essential aptitude python3 apt-utils python3-pip python3-venv -yf
+RUN apt-get install python3 python3-pip python3-venv -yf
 RUN python3 -m venv env
 RUN . env/bin/activate
 #RUN source env\Scripts\activate
