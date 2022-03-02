@@ -2,7 +2,7 @@
 # You can see the Docker images from Apify at https://hub.docker.com/r/apify/.
 # You can also use any other image from Docker Hub.
 #FROM apify/actor-python:3.9
-FROM ubuntu:18.10
+FROM ubuntu:18.04
 # Second, copy just requirements.txt into the actor image,
 # since it should be the only file that affects "pip install" in the next step,
 # in order to speed up the build
