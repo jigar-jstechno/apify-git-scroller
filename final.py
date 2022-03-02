@@ -55,9 +55,10 @@ _FINAL_W = "640"
 _FINAL_H = "360"
 
 _SCROLL_STEP = actor_input["scrollPercentage"]
-_SCROLL_STEP2 = actor_input["scrollPercentage2"]
-_SCROLL_STEP3 = actor_input["scrollPercentage3"]
-_SCROLL_STEP4 = actor_input["scrollPercentage4"]
+_SCROLL_PER = actor_input["scrollPercentage"]
+_SCROLL_PER2 = actor_input["scrollPercentage2"]
+_SCROLL_PER3 = actor_input["scrollPercentage3"]
+_SCROLL_PER4 = actor_input["scrollPercentage4"]
 _TIME_PER_FRAME = actor_input["frameRate"]
 waitToLoad=actor_input["waitToLoadPage"]
 waitToLoad2=actor_input["waitToLoadPage2"]
@@ -110,18 +111,25 @@ def validate_stop_y():
         print(f" - STOP Y greater than page height, _STOP_Y set to {_STOP_Y}")
 
 def scroll_page():
-    SCROLL_PAUSE_TIME = 20
+    global _STOP_Y
     validate_stop_y()
     _DRIVER.execute_script(f"window.scrollTo(0, {_START_Y})")
     _DRIVER.implicitly_wait(2)
     screenshot_list = [take_screenshot(num=0)]
     current_y = int(_START_Y)
 
-    while current_y < _STOP_Y:
-        current_y += int(_SCROLL_STEP)
-        _DRIVER.execute_script(f"window.scrollTo(0, {str(current_y)})")
-        screenshot = take_screenshot(num=len(screenshot_list))
-        screenshot_list.append(screenshot)
+    if(_STOP_Y>_START_Y):
+        while current_y < _STOP_Y:
+            current_y += int(_SCROLL_STEP)
+            _DRIVER.execute_script(f"window.scrollTo(0, {str(current_y)})")
+            screenshot = take_screenshot(num=len(screenshot_list))
+            screenshot_list.append(screenshot)
+    else:
+        while current_y > _STOP_Y:
+            current_y -= int(_SCROLL_STEP)
+            _DRIVER.execute_script(f"window.scrollTo(0, {str(current_y)})")
+            screenshot = take_screenshot(num=len(screenshot_list))
+            screenshot_list.append(screenshot)
     print(f" - {str(len(screenshot_list))} screenshots taken")
 
     validate_stop_y()
@@ -167,7 +175,29 @@ def create_gif(screenshots: list):
     
 
 start_driver()
+if(_SCROLL_PER):
+    _STOP_Y=_SCROLL_PER
+    screenshots = scroll_page()
+    sleep(waitToLoad)
+
+if(_SCROLL_PER2):
+    _STOP_Y=_SCROLL_PER2
+    screenshots = scroll_page()
+    sleep(waitToLoad2)
+
+if(_SCROLL_PER3):
+    _STOP_Y=_SCROLL_PER3
+    screenshots = scroll_page()
+    sleep(waitToLoad3)
+
+if(_SCROLL_PER4):
+    _STOP_Y=_SCROLL_PER4
+    screenshots = scroll_page()
+    sleep(waitToLoad4)
+
+_STOP_Y=0
 screenshots = scroll_page()
+
 l = len(screenshots)
 l = l/2
 sc= int(l/10)
