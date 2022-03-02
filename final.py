@@ -111,6 +111,7 @@ def validate_stop_y():
         print(f" - STOP Y greater than page height, _STOP_Y set to {_STOP_Y}")
 
 def scroll_page():
+    global _START_Y
     global _STOP_Y
     validate_stop_y()
     _DRIVER.execute_script(f"window.scrollTo(0, {_START_Y})")
