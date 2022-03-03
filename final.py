@@ -116,7 +116,7 @@ def scroll_page():
     global _STOP_Y
     global wtl
     global screenshots
-    
+
     validate_stop_y()
     _DRIVER.execute_script(f"window.scrollTo(0, {_START_Y})")
     _DRIVER.implicitly_wait(2)
@@ -144,7 +144,7 @@ def scroll_page():
         print("wtl"+str(wtl))
         screenshot = take_screenshot(num=len(screenshots))
         screenshots.append(screenshot)
-        current_wtl+=150
+        current_wtl+=15
     _START_Y=_STOP_Y
     print(f" - {str(len(screenshots))} screenshots taken")
 
