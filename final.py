@@ -115,11 +115,12 @@ def scroll_page():
     global _START_Y
     global _STOP_Y
     global wtl
+    global screenshots
     
     validate_stop_y()
     _DRIVER.execute_script(f"window.scrollTo(0, {_START_Y})")
     _DRIVER.implicitly_wait(2)
-    screenshot_list = [take_screenshot(num=0)]
+    # screenshots = [take_screenshot(num=0)]
     current_y = int(_START_Y)
     _START_Y = int(_START_Y)
     _STOP_Y = int(_STOP_Y)
@@ -130,26 +131,26 @@ def scroll_page():
         while current_y < _STOP_Y:
             current_y += int(_SCROLL_STEP)
             _DRIVER.execute_script(f"window.scrollTo(0, {str(current_y)})")
-            screenshot = take_screenshot(num=len(screenshot_list))
-            screenshot_list.append(screenshot)
+            screenshot = take_screenshot(num=len(screenshots))
+            screenshots.append(screenshot)
     else:
         while current_y > _STOP_Y:
             current_y -= int(_SCROLL_STEP)
             _DRIVER.execute_script(f"window.scrollTo(0, {str(current_y)})")
-            screenshot = take_screenshot(num=len(screenshot_list))
-            screenshot_list.append(screenshot)
+            screenshot = take_screenshot(num=len(screenshots))
+            screenshots.append(screenshot)
     current_wtl=0
     while current_wtl < wtl*1000:
         print("wtl"+str(wtl))
-        screenshot = take_screenshot(num=len(screenshot_list))
-        screenshot_list.append(screenshot)
+        screenshot = take_screenshot(num=len(screenshots))
+        screenshots.append(screenshot)
         current_wtl+=150
     _START_Y=_STOP_Y
-    print(f" - {str(len(screenshot_list))} screenshots taken")
+    print(f" - {str(len(screenshots))} screenshots taken")
 
     validate_stop_y()
     
-    return screenshot_list
+    return screenshots
 
 
 def process_frame(file: str):
@@ -199,7 +200,8 @@ screenshots=[]
 if(_SCROLL_PER):
     _STOP_Y=_SCROLL_PER*page_height/100
     wtl=waitToLoad
-    screenshots=screenshots+scroll_page()
+    # screenshots=screenshots+scroll_page()
+    scroll_page()
     print("Sleep 1 Start")
     sleep(waitToLoad)
     print("Sleep 1 Stop")
@@ -207,7 +209,8 @@ if(_SCROLL_PER):
 if(_SCROLL_PER2):
     _STOP_Y=_SCROLL_PER2*page_height/100
     wtl=waitToLoad2
-    screenshots=screenshots+scroll_page()
+    # screenshots=screenshots+scroll_page()
+    scroll_page()
     print("Sleep 2 Start")
     sleep(waitToLoad2)
     print("Sleep 2 Stop")
@@ -215,7 +218,8 @@ if(_SCROLL_PER2):
 if(_SCROLL_PER3):
     _STOP_Y=_SCROLL_PER3*page_height/100
     wtl=waitToLoad3
-    screenshots=screenshots+scroll_page()
+    # screenshots=screenshots+scroll_page()
+    scroll_page()
     print("Sleep 3 Start")
     sleep(waitToLoad3)
     print("Sleep 3 Stop")
@@ -223,13 +227,15 @@ if(_SCROLL_PER3):
 if(_SCROLL_PER4):
     _STOP_Y=_SCROLL_PER4*page_height/100
     wtl=waitToLoad4
-    screenshots=screenshots+scroll_page()
+    # screenshots=screenshots+scroll_page()
+    scroll_page()
     print("Sleep 4 Start")
     sleep(waitToLoad4)
     print("Sleep 4 Stop")
 
 _STOP_Y=0
-screenshots=screenshots+scroll_page()
+# screenshots=screenshots+scroll_page()
+scroll_page()
 print(str(screenshots))
 # l = len(screenshots)
 # l = l/2
